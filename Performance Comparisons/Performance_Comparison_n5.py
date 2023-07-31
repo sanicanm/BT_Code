@@ -4,11 +4,14 @@ Created on Sun Jul 30 01:29:32 2023
 
 @author: matth
 """
+import sys
+sys.path.append(r"C:\Users\matth\git\BT_Code\Performance Comparisons\.lib\Jaillet_Algorithm.py")
 import math
 import numpy as np
 import itertools as it
 from Jaillet_Algorithm import Framework
 from Efficient_Framework import EfficientFramework
+import time 
 
 n = 5
 model = EfficientFramework(n)
@@ -39,6 +42,8 @@ success_rate_c = 0
 x = 0
 y = 0
 
+start = time.time()
+
 for total_ranks in it.permutations(range(0, model.m)):
     list_total_ranks = list(total_ranks)
     opt = FindMST(list_total_ranks)
@@ -56,6 +61,10 @@ for total_ranks in it.permutations(range(0, model.m)):
             y += 1
         else:
             x += 1 
+
+end = time.time()
+
+print(end - start)
 
 print(success_rate/math.factorial(model.m), "% successs rate")
 print(success_rate_c/math.factorial(model.m), "% successs rate")
