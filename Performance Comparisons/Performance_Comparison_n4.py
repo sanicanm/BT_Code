@@ -62,6 +62,6 @@ for total_ranks in it.permutations(range(0, model.m)):
 
 
 print(success_rate/iters, "% successs rate")
+print("Entropy outperforms in", 100.0 * y/iters, "% of runs")
 print(success_rate_c/iters, "% successs rate")
-print("Jaillet outperforms in", x/iters, "% of runs")
-print("Entropy outperforms in", y/iters, "% of runs")
+print("Jaillet outperforms in", 100.0 * x/iters, "% of runs")

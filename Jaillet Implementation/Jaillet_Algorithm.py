@@ -146,20 +146,21 @@ class Framework():
                 if a - (-1)**(a % 2) in temp_list_unrevealed_edges and a != 0:
                     temp_A.append(a - (-1)**(a % 2))
             if len(temp_A) > 0:
+                random.shuffle(temp_A) 
                 temp_A.append(temp_list_revealed_edges[index])
                 list_A.append(temp_A)
         #print(base_spanned_sample)
             
         # Finding the elements of Remaining span(A_i)
-        for i in range(index + 1, len(temp_list_revealed_edges)):
-            temp_A = []
-            a = temp_list_revealed_edges[i]
-            if a - (-1)**(a % 2) in temp_list_unrevealed_edges:
-                temp_A.append(a - (-1)**(a % 2))
-                temp_A.append(a)
-                list_A.append(temp_A)
+        if len(list_A) > 0:
+            for i in range(index + 1, len(temp_list_revealed_edges)):
+                temp_A = []
+                a = temp_list_revealed_edges[i]
+                if a - (-1)**(a % 2) in temp_list_unrevealed_edges:
+                    temp_A.append(a - (-1)**(a % 2))
+                    temp_A.append(a)
+                    list_A.append(temp_A)
                 
-        #print(list_A)
         # First Phase of Algorithm
         for A in list_A:
             for a in A[:-1]:
@@ -169,7 +170,9 @@ class Framework():
                         list_selected_edges.append(a)
                         base_spanned_selection = has_edge_selection[int((a - 1) / 2)]
                         has_edge_selection[int((a - 1) / 2)] = True
-                        
+        
+        
+        random.shuffle(temp_list_unrevealed_edges)
         # Second Phase of Algorithm
         for i in range(0, len(temp_list_unrevealed_edges)):
             a = temp_list_unrevealed_edges[0]
