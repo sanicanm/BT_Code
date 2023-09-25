@@ -182,7 +182,7 @@ class EfficientFramework():
             if next_edge == 0 and not base_spanned and next_edge in OPT_current:
                 temp_list_selected_edges.append(next_edge)
                 base_spanned = True
-            elif (not has_edge[idx_hat] or not base_spanned) and edge!=0 and next_edge in OPT_current:
+            elif (not has_edge[idx_hat] or not base_spanned) and next_edge!=0 and next_edge in OPT_current:
                 temp_list_selected_edges.append(next_edge)
                 base_spanned = has_edge[idx_hat] or base_spanned
                 has_edge[idx_hat] = True
